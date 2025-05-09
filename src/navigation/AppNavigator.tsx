@@ -4,35 +4,28 @@ import { AuthNavigation } from "./AuthNavigation";
 import { MainNavigation } from "./MainNavigation";
 import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { View, Text } from "react-native";
-import { useNavigation, NavigationProp } from "@react-navigation/native";
 
-type RootStackParamList = {
-  Home: undefined;
-  // Agrega aquí más rutas según necesites
-};
+
+const USE_AUTHENTICATION = false; // Cambiar a true cuando se necesite la autenticación
 
 export const AppNavigator = () => {
-  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  if (USE_AUTHENTICATION) {
+    return (
+      <ClerkProvider
+        publishableKey={
+          "pk_test_cHJlY2lvdXMtbWlkZ2UtNjEuY2xlcmsuYWNjb3VudHMuZGV2JA"
+        }
+      >
+        <InnerNavigation />
+      </ClerkProvider>
+    );
+  }
 
-  const handleRouterPush = (path: string) => {
-    navigation.navigate(path as keyof RootStackParamList);
-  };
-
-  const handleRouterReplace = (path: string) => {
-    navigation.reset({
-      index: 0,
-      routes: [{ name: path as keyof RootStackParamList }],
-    });
-  };
-
+  // Modo sin autenticación - va directamente a MainNavigation
   return (
-    <ClerkProvider
-      publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!}
-      routerPush={handleRouterPush}
-      routerReplace={handleRouterReplace}
-    >
-      <InnerNavigation />
-    </ClerkProvider>
+    <NavigationContainer>
+      <MainNavigation />
+    </NavigationContainer>
   );
 };
 
