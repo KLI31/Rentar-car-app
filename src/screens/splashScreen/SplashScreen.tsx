@@ -1,26 +1,17 @@
 import React, { useEffect } from "react";
-import { View, Text, StyleSheet, StatusBar } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { SCREEN_NAMES } from "../../utils/screenNames";
-
-type RootStackParamList = {
-  [key in (typeof SCREEN_NAMES)[keyof typeof SCREEN_NAMES]]: undefined;
-};
 
 const SplashScreen = () => {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation = useNavigation<any>();
 
   useEffect(() => {
-    setTimeout(() => {
-      navigation.navigate(SCREEN_NAMES.Home);
-    }, 3000);
+    navigation.replace("Onboarding"); // redirige directo al onboarding
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Cargando...</Text>
+      <Text style={styles.text}>Bienvenido a KistcarApp</Text>
     </View>
   );
 };
@@ -28,14 +19,16 @@ const SplashScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ffffff",
   },
   text: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: "bold",
+    color: "#333",
   },
 });
 
 export default SplashScreen;
+
