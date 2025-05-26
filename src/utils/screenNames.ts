@@ -14,4 +14,5 @@ export const SCREEN_NAMES = {
   Profile: "Profile",
   Settings: "Settings",
   MainTabs: "MainTabs",
+  Promo: "Promo",
 };
