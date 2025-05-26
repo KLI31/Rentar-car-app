@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { HomeScreen } from "../screens/home/HomeScreen";
 import useThemedStyles from "@/hooks/useThemedStyles";
 import { SCREEN_NAMES } from "@/utils/screenNames";
+import Icon from "@/utils/icons";
 
 const CarScreen = () => <View />;
 const ChatScreen = () => <View />;
@@ -46,11 +47,7 @@ export const BottomTabs = () => {
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color, size, focused }) => (
-            <Ionicons
-              name="home"
-              size={24}
-              color={focused ? "#3366FF" : "#222"}
-            />
+            <Icon name="home" size={24} color={focused ? "#3366FF" : "#222"} />
           ),
         }}
       />
@@ -59,11 +56,7 @@ export const BottomTabs = () => {
         component={CarScreen}
         options={{
           tabBarIcon: ({ color, size, focused }) => (
-            <Ionicons
-              name="car"
-              size={24}
-              color={focused ? "#3366FF" : "#222"}
-            />
+            <Icon name="heart" size={24} color={focused ? "#3366FF" : "#222"} />
           ),
         }}
       />
@@ -93,11 +86,7 @@ export const BottomTabs = () => {
         component={ProfileScreen}
         options={{
           tabBarIcon: ({ color, size, focused }) => (
-            <Ionicons
-              name="person"
-              size={24}
-              color={focused ? "#3366FF" : "#222"}
-            />
+            <Icon name="user" size={24} color={focused ? "#3366FF" : "#222"} />
           ),
         }}
       />
