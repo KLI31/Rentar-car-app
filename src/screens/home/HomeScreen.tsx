@@ -1,7 +1,14 @@
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 import useThemedStyles from "@/hooks/useThemedStyles";
+import { SCREEN_NAMES } from "@/utils/screenNames";
 
-export const HomeScreen = () => {
+export const HomeScreen = ({ navigation }: { navigation: any }) => {
   const style = useThemedStyles(styles);
 
   return (
@@ -14,6 +21,11 @@ export const HomeScreen = () => {
         <Text style={style.subtitle}>
           Tu aplicación de alquiler de vehículos
         </Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate(SCREEN_NAMES.Promo)}
+        >
+          <Text>Ir a las promociones</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
