@@ -2,6 +2,7 @@
   "expo": {
     "name": "rental-car-app",
     "slug": "rental-car-app",
+    "scheme": "kriscar",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,17 +15,30 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kriscar.app",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": ""
+        }
+      }
     },
     "android": {
+      "package": "com.kriscarapp",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "config": {
+        "googleSignIn": {
+         
+        }
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
+
     "plugins": [
       "expo-font"
     ]

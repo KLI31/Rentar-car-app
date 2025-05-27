@@ -5,26 +5,22 @@ import { MainNavigation } from "./MainNavigation";
 import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { View, Text } from "react-native";
 
-
-const USE_AUTHENTICATION = false; // Cambiar a true cuando se necesite la autenticación
+const USE_AUTHENTICATION = true;
 
 export const AppNavigator = () => {
   if (USE_AUTHENTICATION) {
     return (
       <ClerkProvider
-        publishableKey={
-          "pk_test_cHJlY2lvdXMtbWlkZ2UtNjEuY2xlcmsuYWNjb3VudHMuZGV2JA"
-        }
+        publishableKey="pk_test_ZGVhci10aWdlci0yNC5jbGVyay5hY2NvdW50cy5kZXYk"
       >
         <InnerNavigation />
       </ClerkProvider>
     );
   }
 
-  // Modo sin autenticación - va directamente a MainNavigation
   return (
     <NavigationContainer>
-      <MainNavigation />
+      <AuthNavigation />
     </NavigationContainer>
   );
 };
@@ -34,8 +30,8 @@ const InnerNavigation = () => {
 
   if (!isLoaded) {
     return (
-      <View>
-        <Text>Loading...</Text>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Loading authentication...</Text>
       </View>
     );
   }
